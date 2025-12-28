@@ -15,17 +15,21 @@ export default function Index({ posts }) {
                         <div key={post.id} className="flex flex-col rounded-lg shadow-lg overflow-hidden bg-white hover:shadow-xl transition-shadow duration-300">
                             {/* Placeholder Image */}
                             <div className="flex-shrink-0">
-                                <div className="h-48 w-full bg-indigo-100 flex items-center justify-center text-indigo-400 font-bold text-2xl">
-                                    {post.title.charAt(0)}
-                                </div>
+                                {post.featured_image ? (
+                                    <img className="h-48 w-full object-cover" src={`/storage/${post.featured_image}`} alt={post.title} />
+                                ) : (
+                                    <div className="h-48 w-full bg-gray-100 flex items-center justify-center text-red-600 font-bold text-2xl">
+                                        {post.title.charAt(0)}
+                                    </div>
+                                )}
                             </div>
                             <div className="flex-1 bg-white p-6 flex flex-col justify-between">
                                 <div className="flex-1">
-                                    <div className="text-sm font-medium text-indigo-600">
+                                    <div className="text-sm font-medium text-red-600">
                                         {post.categories && post.categories.map(c => c.name).join(', ')}
                                     </div>
                                     <Link href={route('blog.show', post.slug)} className="block mt-2 group">
-                                        <p className="text-xl font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors">
+                                        <p className="text-xl font-semibold text-gray-900 group-hover:text-red-600 transition-colors">
                                             {post.title}
                                         </p>
                                         <p className="mt-3 text-base text-gray-500 line-clamp-3">
@@ -74,7 +78,7 @@ export default function Index({ posts }) {
                                     <Link
                                         key={i}
                                         href={link.url}
-                                        className={`relative inline-flex items-center px-4 py-2 border text-sm font-medium ${link.active ? 'z-10 bg-indigo-50 border-indigo-500 text-indigo-600' : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'} ${i === 0 ? 'rounded-l-md' : ''} ${i === links.length - 1 ? 'rounded-r-md' : ''}`}
+                                        className={`relative inline-flex items-center px-4 py-2 border text-sm font-medium ${link.active ? 'z-10 bg-red-50 border-red-500 text-red-600' : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'} ${i === 0 ? 'rounded-l-md' : ''} ${i === links.length - 1 ? 'rounded-r-md' : ''}`}
                                         dangerouslySetInnerHTML={{ __html: link.label }}
                                     />
                                 ) : (

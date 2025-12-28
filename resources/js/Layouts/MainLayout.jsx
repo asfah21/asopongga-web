@@ -11,11 +11,9 @@ export default function MainLayout({ children, header }) {
         <div className="flex min-h-screen bg-gray-100 font-sans">
             {/* Sidebar */}
             <div className="hidden md:flex flex-col w-64 bg-gray-900 shadow-xl overflow-y-auto">
-                <div className="flex items-center justify-center p-4 h-24 bg-gray-900 shadow-sm z-10 shrink-0">
-                    <Link href="/" className="flex flex-col items-center gap-2">
-                        <div className="text-white font-bold text-lg md:text-xl tracking-wide text-center uppercase leading-tight">
-                            <span className="text-brand-red">ASOPONGGA</span>
-                        </div>
+                <div className="flex items-center justify-center h-20 bg-gray-900 shadow-sm z-10 shrink-0">
+                    <Link href="/" className="flex items-center gap-2">
+                        <div className="text-white font-bold text-2xl tracking-tight">ASOPONGGA<span className="text-red-600">WEB</span></div>
                     </Link>
                 </div>
                 <MainMenu className="flex-1" />
@@ -34,9 +32,9 @@ export default function MainLayout({ children, header }) {
                         <div className="ml-3 relative">
                             <Dropdown>
                                 <Dropdown.Trigger>
-                                    <button className="flex items-center group text-sm font-medium text-gray-600 hover:text-brand-red focus:outline-none transition duration-150 ease-in-out">
+                                    <button className="flex items-center group text-sm font-medium text-gray-600 hover:text-red-600 focus:outline-none transition duration-150 ease-in-out">
                                         <span className="mr-2 font-semibold">{auth.user.name}</span>
-                                        <svg className="h-4 w-4 fill-current text-gray-400 group-hover:text-brand-red" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                        <svg className="h-4 w-4 fill-current text-gray-400 group-hover:text-red-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                             <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                                         </svg>
                                     </button>

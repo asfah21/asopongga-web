@@ -1,36 +1,34 @@
-import { Link } from '@inertiajs/react';
 import React from 'react';
+import { Link } from '@inertiajs/react';
 
 export default function FrontLayout({ children, title }) {
     return (
         <div className="min-h-screen bg-gray-50 font-sans text-gray-900">
             {/* Navigation */}
-            <nav className="bg-brand-black shadow-lg sticky top-0 z-50 border-b border-brand-red/30">
+            <nav className="bg-white shadow-lg sticky top-0 z-50 border-t-4 border-red-600">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-20">
                         <div className="flex">
                             <Link href="/" className="flex-shrink-0 flex items-center gap-2">
-                                <div className="text-white font-bold text-xl md:text-2xl tracking-tight uppercase">
-                                    <span className="text-brand-red">ASOPONGGA</span> WEB
-                                </div>
+                                <div className="text-gray-900 font-bold text-2xl tracking-tight">ASOPONGGA<span className="text-red-600">WEB</span></div>
                             </Link>
                             <div className="hidden sm:ml-10 sm:flex sm:space-x-8">
                                 <Link
                                     href="/"
-                                    className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium leading-5 transition duration-150 ease-in-out ${route().current('home') ? 'border-brand-red text-white' : 'border-transparent text-gray-300 hover:text-white hover:border-brand-red'}`}
+                                    className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium leading-5 transition duration-150 ease-in-out ${route().current('home') ? 'border-red-600 text-gray-900' : 'border-transparent text-gray-500 hover:text-gray-900 hover:border-gray-300'}`}
                                 >
                                     Home
                                 </Link>
                                 <Link
                                     href={route('blog.index')}
-                                    className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium leading-5 transition duration-150 ease-in-out ${route().current('blog.*') ? 'border-brand-red text-white' : 'border-transparent text-gray-300 hover:text-white hover:border-brand-red'}`}
+                                    className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium leading-5 transition duration-150 ease-in-out ${route().current('blog.*') ? 'border-red-600 text-gray-900' : 'border-transparent text-gray-500 hover:text-gray-900 hover:border-gray-300'}`}
                                 >
                                     Blog
                                 </Link>
                             </div>
                         </div>
                         <div className="flex items-center">
-                            <Link href={route('login')} className="text-sm font-medium text-gray-300 hover:text-brand-gold transition-colors">
+                            <Link href={route('login')} className="text-sm font-medium text-gray-500 hover:text-red-600 transition-colors">
                                 Admin Login
                             </Link>
                         </div>
@@ -40,9 +38,9 @@ export default function FrontLayout({ children, title }) {
 
             {/* Page Header (Optional) */}
             {title && (
-                <div className="bg-white shadow-sm border-b border-gray-200">
+                <div className="bg-gray-900 shadow-sm border-b border-gray-800">
                     <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 text-center">
-                        <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl text-brand-black">
+                        <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
                             {title}
                         </h1>
                     </div>
@@ -69,7 +67,7 @@ export default function FrontLayout({ children, title }) {
                             </a>
                         </div>
                         <p className="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
-                            &copy; {new Date().getFullYear()} CompanyProfile. All rights reserved.
+                            &copy; {new Date().getFullYear()} Asopongga Web. All rights reserved.
                         </p>
                     </div>
                 </div>

@@ -3,11 +3,11 @@ import { Link } from '@inertiajs/react';
 
 export default function GuestLayout({ children }) {
     return (
-        <div className="flex min-h-screen flex-col items-center justify-center bg-indigo-900 pt-6 sm:pt-0">
+        <div className="flex min-h-screen flex-col items-center justify-center bg-gray-900 pt-6 sm:pt-0">
             <div>
                 <Link href="/">
                     <div className="flex items-center justify-center gap-2 mb-6">
-                        <div className="text-white font-bold text-3xl tracking-tight">Company<span className="text-indigo-400">Profile</span></div>
+                        <div className="text-white font-bold text-3xl tracking-tight">ASOPONGGA<span className="text-red-600">WEB</span></div>
                     </div>
                 </Link>
             </div>
@@ -16,7 +16,7 @@ export default function GuestLayout({ children }) {
                 {children}
             </div>
 
-            <div className="mt-8 text-indigo-200 text-sm">
+            <div className="mt-8 text-gray-400 text-sm">
                 &copy; {new Date().getFullYear()} Asopongga Web. All rights reserved.
             </div>
         </div>

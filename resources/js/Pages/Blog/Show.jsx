@@ -9,11 +9,11 @@ export default function Show({ post, recent_posts }) {
 
             <article>
                 {/* Article Header */}
-                <header className="bg-indigo-900 text-white py-16 sm:py-24">
+                <header className="bg-gray-900 text-white py-16 sm:py-24">
                     <div className="max-w-3xl mx-auto px-4 text-center sm:px-6 lg:px-8">
                         <div className="mb-4">
                             {post.categories && post.categories.map(c => (
-                                <span key={c.id} className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-indigo-800 text-indigo-100 mx-1">
+                                <span key={c.id} className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-red-800 text-red-100 mx-1">
                                     {c.name}
                                 </span>
                             ))}
@@ -21,7 +21,7 @@ export default function Show({ post, recent_posts }) {
                         <h1 className="text-3xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl mb-4">
                             {post.title}
                         </h1>
-                        <div className="flex items-center justify-center text-indigo-300 space-x-2 text-sm sm:text-base">
+                        <div className="flex items-center justify-center text-gray-400 space-x-2 text-sm sm:text-base">
                             <span>By {post.author?.name}</span>
                             <span>&middot;</span>
                             <time dateTime={post.published_at}>
@@ -39,7 +39,7 @@ export default function Show({ post, recent_posts }) {
                                 {post.excerpt}
                             </p>
                         </div>
-                        <div className="mt-6 prose prose-indigo prose-lg text-gray-500 mx-auto">
+                        <div className="mt-6 prose prose-red prose-lg text-gray-500 mx-auto">
                             <div className="whitespace-pre-wrap font-serif">
                                 {post.content}
                             </div>
@@ -60,11 +60,11 @@ export default function Show({ post, recent_posts }) {
                                 <div key={recent.id} className="flex flex-col rounded-lg shadow-sm overflow-hidden bg-white hover:shadow-md transition-shadow">
                                     <div className="p-6">
                                         <Link href={route('blog.show', recent.slug)} className="block mt-2">
-                                            <p className="text-xl font-semibold text-gray-900 hover:text-indigo-600 transition-colors">{recent.title}</p>
+                                            <p className="text-xl font-semibold text-gray-900 hover:text-red-600 transition-colors">{recent.title}</p>
                                         </Link>
                                         <p className="mt-3 text-base text-gray-500 line-clamp-3">{recent.excerpt}</p>
                                         <div className="mt-4">
-                                            <Link href={route('blog.show', recent.slug)} className="text-indigo-600 hover:text-indigo-500 text-sm font-medium">Read full story &rarr;</Link>
+                                            <Link href={route('blog.show', recent.slug)} className="text-red-600 hover:text-red-500 text-sm font-medium">Read full story &rarr;</Link>
                                         </div>
                                     </div>
                                 </div>

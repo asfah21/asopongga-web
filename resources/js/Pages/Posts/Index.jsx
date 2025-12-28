@@ -17,10 +17,10 @@ export default function Index({ posts }) {
                             <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
                         </svg>
                     </div>
-                    <input className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 sm:text-sm transition duration-150 ease-in-out" placeholder="Search posts..." type="text" />
+                    <input className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:border-red-500 focus:ring-1 focus:ring-red-500 sm:text-sm transition duration-150 ease-in-out" placeholder="Search posts..." type="text" />
                 </div>
 
-                <Link href={route('posts.create')} className="ml-4 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <Link href={route('posts.create')} className="ml-4 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                     <span>Create Post</span>
                 </Link>
             </div>
@@ -51,7 +51,7 @@ export default function Index({ posts }) {
                             <tr key={post.id} className="hover:bg-gray-50 transition-colors">
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <div className="flex items-center">
-                                        <div className="text-sm font-medium text-indigo-600 truncate max-w-sm">
+                                        <div className="text-sm font-medium text-red-600 truncate max-w-sm">
                                             <Link href={route('posts.edit', post.id)} className="hover:underline">
                                                 {post.title}
                                             </Link>
@@ -70,7 +70,7 @@ export default function Index({ posts }) {
                                     {post.published_at ? new Date(post.published_at).toLocaleDateString() : '-'}
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <Link href={route('posts.edit', post.id)} className="text-indigo-600 hover:text-indigo-900 group">
+                                    <Link href={route('posts.edit', post.id)} className="text-red-600 hover:text-red-900 group">
                                         <svg className="w-5 h-5 inline-block group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                         </svg>
@@ -102,7 +102,7 @@ export default function Index({ posts }) {
                                         <Link
                                             key={i}
                                             href={link.url}
-                                            className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${link.active ? 'z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600' : 'text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0'} ${i === 0 ? 'rounded-l-md' : ''} ${i === links.length - 1 ? 'rounded-r-md' : ''}`}
+                                            className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${link.active ? 'z-10 bg-red-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600' : 'text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0'} ${i === 0 ? 'rounded-l-md' : ''} ${i === links.length - 1 ? 'rounded-r-md' : ''}`}
                                             dangerouslySetInnerHTML={{ __html: link.label }}
                                         />
                                     ) : (

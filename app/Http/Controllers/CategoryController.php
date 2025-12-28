@@ -18,11 +18,47 @@ class CategoryController extends Controller
 
     public function create()
     {
-        // Placeholder
+        return Inertia::render('Categories/Create');
     }
 
     public function store(Request $request)
     {
-        // Placeholder
+        $request->validate([
+            'name' => 'required|string|max:255|unique:categories',
+        ]);
+
+        Category::create([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+        ]);
+
+        return redirect()->route('categories.index')->with('message', 'Category created successfully.');
+    }
+
+    public function edit(Category $category)
+    {
+        return Inertia::render('Categories/Edit', [
+            'category' => $category
+        ]);
+    }
+
+    public function update(Request $request, Category $category)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255|unique:categories,name,' . $category->id,
+        ]);
+
+        $category->update([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+        ]);
+
+        return redirect()->route('categories.index')->with('message', 'Category updated successfully.');
+    }
+
+    public function destroy(Category $category)
+    {
+        $category->delete();
+        return redirect()->route('categories.index')->with('message', 'Category deleted successfully.');
     }
 }

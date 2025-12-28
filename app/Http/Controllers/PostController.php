@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -36,7 +37,13 @@ class PostController extends Controller
             'status' => 'required|in:draft,published',
             'categories' => 'array',
             'categories.*' => 'exists:categories,id',
+            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+
+        $imagePath = null;
+        if ($request->hasFile('featured_image')) {
+            $imagePath = $request->file('featured_image')->store('posts', 'public');
+        }
 
         $post = Post::create([
             'title' => $validated['title'],
@@ -46,6 +53,7 @@ class PostController extends Controller
             'status' => $validated['status'],
             'published_at' => $validated['status'] === 'published' ? now() : null,
             'author_id' => auth()->id(),
+            'featured_image' => $imagePath,
         ]);
 
         if ($request->has('categories')) {
@@ -72,16 +80,27 @@ class PostController extends Controller
             'status' => 'required|in:draft,published',
             'categories' => 'array',
             'categories.*' => 'exists:categories,id',
+            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $post->update([
+        $data = [
             'title' => $validated['title'],
             'slug' => Str::slug($validated['title']),
             'content' => $validated['content'],
             'excerpt' => Str::limit(strip_tags($validated['content']), 150),
             'status' => $validated['status'],
             'published_at' => $validated['status'] === 'published' ? now() : null,
-        ]);
+        ];
+
+        if ($request->hasFile('featured_image')) {
+            // Delete old image if exists
+            if ($post->featured_image) {
+                Storage::disk('public')->delete($post->featured_image);
+            }
+            $data['featured_image'] = $request->file('featured_image')->store('posts', 'public');
+        }
+
+        $post->update($data);
 
         if ($request->has('categories')) {
             $post->categories()->sync($request->categories);

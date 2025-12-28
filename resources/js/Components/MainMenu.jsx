@@ -9,16 +9,16 @@ export default function MainMenu({ className }) {
     return (
         <div className={className}>
             <div className="py-4 font-medium">
-                <Link className={`flex items-center px-6 py-3 transition-colors ${route().current('dashboard') ? 'bg-brand-red text-white shadow-md' : 'text-gray-400 hover:bg-gray-800 hover:text-white'}`} href={route('dashboard')}>
-                    <IconDashboard className={`w-5 h-5 mr-3 fill-current ${route().current('dashboard') ? 'text-brand-gold' : ''}`} />
+                <Link className={`flex items-center px-6 py-3 transition-colors ${route().current('dashboard') ? 'bg-red-700 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'}`} href={route('dashboard')}>
+                    <IconDashboard className="w-5 h-5 mr-3 fill-current" />
                     <div>Dashboard</div>
                 </Link>
-                <Link className={`flex items-center px-6 py-3 transition-colors ${route().current('posts.*') ? 'bg-brand-red text-white shadow-md' : 'text-gray-400 hover:bg-gray-800 hover:text-white'}`} href={route('posts.index')}>
-                    <IconPost className={`w-5 h-5 mr-3 fill-current ${route().current('posts.*') ? 'text-brand-gold' : ''}`} />
+                <Link className={`flex items-center px-6 py-3 transition-colors ${route().current('posts.*') ? 'bg-red-700 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'}`} href={route('posts.index')}>
+                    <IconPost className="w-5 h-5 mr-3 fill-current" />
                     <div>Posts</div>
                 </Link>
-                <Link className={`flex items-center px-6 py-3 transition-colors ${route().current('categories.*') ? 'bg-brand-red text-white shadow-md' : 'text-gray-400 hover:bg-gray-800 hover:text-white'}`} href={route('categories.index')}>
-                    <IconCategory className={`w-5 h-5 mr-3 fill-current ${route().current('categories.*') ? 'text-brand-gold' : ''}`} />
+                <Link className={`flex items-center px-6 py-3 transition-colors ${route().current('categories.*') ? 'bg-red-700 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'}`} href={route('categories.index')}>
+                    <IconCategory className="w-5 h-5 mr-3 fill-current" />
                     <div>Categories</div>
                 </Link>
             </div>
