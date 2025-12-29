@@ -37,6 +37,12 @@ export default function FrontLayout({ children, title }) {
                                 >
                                     {t('blog')}
                                 </Link>
+                                <Link
+                                    href={route('certificate.verify')}
+                                    className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium leading-5 transition duration-150 ease-in-out ${route().current('certificate.verify') ? 'border-red-600 text-gray-900' : 'border-transparent text-gray-500 hover:text-gray-900 hover:border-gray-300'}`}
+                                >
+                                    {t('certificate')}
+                                </Link>
                             </div>
                         </div>
                         <div className="flex items-center gap-6">

@@ -9,6 +9,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CertificateController;
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CertificateVerificationController;
 
 use App\Models\Post;
 
@@ -26,6 +27,7 @@ Route::get('/', function () {
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('/certificate', [CertificateVerificationController::class, 'index'])->name('certificate.verify');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

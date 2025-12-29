@@ -50,7 +50,7 @@ export default function Edit({ certificate }) {
                                 type="text"
                                 className="mt-1 block w-full bg-gray-50 border-gray-200 focus:bg-white transition-all text-lg font-mono"
                                 value={data.no_cert}
-                                onChange={(e) => setData('no_cert', e.target.value)}
+                                onChange={(e) => setData('no_cert', e.target.value.replace(/\s+/g, ''))}
                                 required
                             />
                             <InputError message={errors.no_cert} className="mt-2" />
