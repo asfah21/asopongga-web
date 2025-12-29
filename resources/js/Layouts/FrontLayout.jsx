@@ -1,7 +1,19 @@
 import React from 'react';
 import { Link } from '@inertiajs/react';
+import { useLanguage } from '@/Contexts/LanguageContext';
+import Dropdown from '@/Components/Dropdown';
 
 export default function FrontLayout({ children, title }) {
+    const { t, locale, setLocale } = useLanguage();
+
+    const languages = [
+        { code: 'en', label: 'English', short: 'EN', flag: 'https://flagcdn.com/w40/us.png' },
+        { code: 'id', label: 'Indonesia', short: 'ID', flag: 'https://flagcdn.com/w40/id.png' },
+        { code: 'zh', label: '中文', short: 'ZH', flag: 'https://flagcdn.com/w40/cn.png' },
+    ];
+
+    const currentLanguage = languages.find(lang => lang.code === locale);
+
     return (
         <div className="min-h-screen bg-gray-50 font-sans text-gray-900">
             {/* Navigation */}
@@ -17,19 +29,53 @@ export default function FrontLayout({ children, title }) {
                                     href="/"
                                     className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium leading-5 transition duration-150 ease-in-out ${route().current('home') ? 'border-red-600 text-gray-900' : 'border-transparent text-gray-500 hover:text-gray-900 hover:border-gray-300'}`}
                                 >
-                                    Home
+                                    {t('home')}
                                 </Link>
                                 <Link
                                     href={route('blog.index')}
                                     className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium leading-5 transition duration-150 ease-in-out ${route().current('blog.*') ? 'border-red-600 text-gray-900' : 'border-transparent text-gray-500 hover:text-gray-900 hover:border-gray-300'}`}
                                 >
-                                    Blog
+                                    {t('blog')}
                                 </Link>
                             </div>
                         </div>
-                        <div className="flex items-center">
+                        <div className="flex items-center gap-6">
+                            {/* Language Switcher */}
+                            <div className="relative">
+                                <Dropdown>
+                                    <Dropdown.Trigger>
+                                        <button className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors bg-gray-50 px-3 py-2 rounded-lg border border-gray-200 group text-nowrap ">
+                                            <img
+                                                src={currentLanguage?.flag}
+                                                alt={currentLanguage?.short}
+                                                className="w-5 h-3.5 object-cover rounded-sm shadow-sm grayscale-[0.2] group-hover:grayscale-0 transition-all"
+                                            />
+                                            <span className="font-bold">{currentLanguage?.short}</span>
+                                            <svg className="ml-1 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                                            </svg>
+                                        </button>
+                                    </Dropdown.Trigger>
+                                    <Dropdown.Content>
+                                        {languages.map((lang) => (
+                                            <button
+                                                key={lang.code}
+                                                onClick={() => setLocale(lang.code)}
+                                                className={`w-full text-left px-4 py-2.5 text-sm leading-5 flex items-center gap-3 transition duration-150 ease-in-out ${locale === lang.code ? 'bg-red-50 text-red-700 font-semibold' : 'text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100'}`}
+                                            >
+                                                <img
+                                                    src={lang.flag}
+                                                    alt={lang.label}
+                                                    className="w-5 h-3.5 object-cover rounded-sm shadow-sm"
+                                                />
+                                                {lang.label}
+                                            </button>
+                                        ))}
+                                    </Dropdown.Content>
+                                </Dropdown>
+                            </div>
                             <Link href={route('login')} className="text-sm font-medium text-gray-500 hover:text-red-600 transition-colors">
-                                Admin Login
+                                {t('admin_login')}
                             </Link>
                         </div>
                     </div>
@@ -67,7 +113,7 @@ export default function FrontLayout({ children, title }) {
                             </a>
                         </div>
                         <p className="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
-                            &copy; {new Date().getFullYear()} Asopongga Web. All rights reserved.
+                            &copy; {new Date().getFullYear()} Asopongga Web. {t('rights')}
                         </p>
                     </div>
                 </div>

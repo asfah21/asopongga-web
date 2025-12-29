@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link, Head } from '@inertiajs/react';
 import FrontLayout from '@/Layouts/FrontLayout';
+import { useLanguage } from '@/Contexts/LanguageContext';
 
 export default function Show({ post, recent_posts }) {
+    const { t } = useLanguage();
+
     return (
         <FrontLayout>
             <Head title={post.title} />
@@ -22,7 +25,7 @@ export default function Show({ post, recent_posts }) {
                             {post.title}
                         </h1>
                         <div className="flex items-center justify-center text-gray-400 space-x-2 text-sm sm:text-base">
-                            <span>By {post.author?.name}</span>
+                            <span>{t('by')} {post.author?.name}</span>
                             <span>&middot;</span>
                             <time dateTime={post.published_at}>
                                 {new Date(post.published_at).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
@@ -53,7 +56,7 @@ export default function Show({ post, recent_posts }) {
                 <div className="bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
                     <div className="max-w-7xl mx-auto">
                         <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 mb-8 max-w-2xl mx-auto lg:max-w-none">
-                            Read Next
+                            {t('read_next')}
                         </h2>
                         <div className="grid gap-12 lg:grid-cols-3 lg:gap-x-8 max-w-2xl mx-auto lg:max-w-none">
                             {recent_posts.map(recent => (
@@ -64,7 +67,7 @@ export default function Show({ post, recent_posts }) {
                                         </Link>
                                         <p className="mt-3 text-base text-gray-500 line-clamp-3">{recent.excerpt}</p>
                                         <div className="mt-4">
-                                            <Link href={route('blog.show', recent.slug)} className="text-red-600 hover:text-red-500 text-sm font-medium">Read full story &rarr;</Link>
+                                            <Link href={route('blog.show', recent.slug)} className="text-red-600 hover:text-red-500 text-sm font-medium">{t('read_full')} &rarr;</Link>
                                         </div>
                                     </div>
                                 </div>

@@ -1,8 +1,11 @@
 import React from 'react';
 import { Head, Link } from '@inertiajs/react';
 import FrontLayout from '@/Layouts/FrontLayout';
+import { useLanguage } from '@/Contexts/LanguageContext';
 
 export default function Welcome({ recentPosts }) {
+    const { t } = useLanguage();
+
     return (
         <FrontLayout>
             <Head title="Welcome" />
@@ -13,12 +16,11 @@ export default function Welcome({ recentPosts }) {
                     <div className="relative z-10 pb-8 bg-gray-900 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
                         <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
                             <div className="sm:text-center lg:text-left">
-                                <h1 className="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl">
-                                    <span className="block xl:inline">We build digital</span>{' '}
-                                    <span className="block text-red-600 xl:inline">experiences</span>
+                                <h1 className="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl text-balance">
+                                    {t('welcome_title')}
                                 </h1>
                                 <p className="mt-3 text-base text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                                    Transforming ideas into reality with cutting-edge technology and innovative design. Your partner in digital excellence.
+                                    {t('hero_subtitle')}
                                 </p>
                                 <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                                     <div className="rounded-md shadow">
@@ -26,12 +28,12 @@ export default function Welcome({ recentPosts }) {
                                             href={route('blog.index')}
                                             className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-red-700 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
                                         >
-                                            Read Our Blog
+                                            {t('read_blog')}
                                         </Link>
                                     </div>
                                     <div className="mt-3 sm:mt-0 sm:ml-3">
                                         <div className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 md:py-4 md:text-lg md:px-10">
-                                            Contact Us
+                                            {t('contact_us')}
                                         </div>
                                     </div>
                                 </div>
@@ -51,12 +53,12 @@ export default function Welcome({ recentPosts }) {
             <div className="py-12 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="lg:text-center">
-                        <h2 className="text-base text-red-600 font-semibold tracking-wide uppercase">Services</h2>
+                        <h2 className="text-base text-red-600 font-semibold tracking-wide uppercase">{t('services')}</h2>
                         <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                            A better way to innovate
+                            {t('better_way')}
                         </p>
                         <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-                            We provide comprehensive solutions tailored to your business needs, ensuring scalability and performance.
+                            {t('service_desc')}
                         </p>
                     </div>
 
@@ -70,9 +72,9 @@ export default function Welcome({ recentPosts }) {
                                     </svg>
                                 </div>
                                 <div className="ml-16">
-                                    <h3 className="text-lg leading-6 font-medium text-gray-900">Web Development</h3>
+                                    <h3 className="text-lg leading-6 font-medium text-gray-900">{t('web_dev')}</h3>
                                     <p className="mt-2 text-base text-gray-500">
-                                        Custom web applications built with the latest technologies like React and Laravel.
+                                        {t('web_dev_desc')}
                                     </p>
                                 </div>
                             </div>
@@ -84,9 +86,9 @@ export default function Welcome({ recentPosts }) {
                                     </svg>
                                 </div>
                                 <div className="ml-16">
-                                    <h3 className="text-lg leading-6 font-medium text-gray-900">Mobile Solutions</h3>
+                                    <h3 className="text-lg leading-6 font-medium text-gray-900">{t('mobile_sol')}</h3>
                                     <p className="mt-2 text-base text-gray-500">
-                                        Cross-platform mobile apps that provide seamless user experiences.
+                                        {t('mobile_sol_desc')}
                                     </p>
                                 </div>
                             </div>
@@ -98,9 +100,9 @@ export default function Welcome({ recentPosts }) {
                                     </svg>
                                 </div>
                                 <div className="ml-16">
-                                    <h3 className="text-lg leading-6 font-medium text-gray-900">Quality Assurance</h3>
+                                    <h3 className="text-lg leading-6 font-medium text-gray-900">{t('qa')}</h3>
                                     <p className="mt-2 text-base text-gray-500">
-                                        Rigorous testing strategies to ensure your software is bug-free and reliable.
+                                        {t('qa_desc')}
                                     </p>
                                 </div>
                             </div>
@@ -112,9 +114,9 @@ export default function Welcome({ recentPosts }) {
                                     </svg>
                                 </div>
                                 <div className="ml-16">
-                                    <h3 className="text-lg leading-6 font-medium text-gray-900">Consultancy</h3>
+                                    <h3 className="text-lg leading-6 font-medium text-gray-900">{t('consultancy')}</h3>
                                     <p className="mt-2 text-base text-gray-500">
-                                        Expert advice to help you navigate complex digital transformations.
+                                        {t('consultancy_desc')}
                                     </p>
                                 </div>
                             </div>
@@ -129,10 +131,10 @@ export default function Welcome({ recentPosts }) {
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center">
                             <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
-                                Latest News from Blog
+                                {t('latest_news')}
                             </h2>
                             <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
-                                Stay updated with our latest insights and company announcements.
+                                {t('news_subtitle')}
                             </p>
                         </div>
                         <div className="mt-12 grid gap-5 max-w-lg mx-auto lg:grid-cols-3 lg:max-w-none">
@@ -180,7 +182,7 @@ export default function Welcome({ recentPosts }) {
                         </div>
                         <div className="mt-10 text-center">
                             <Link href={route('blog.index')} className="text-red-600 font-semibold hover:text-red-500">
-                                View all posts &rarr;
+                                {t('view_all')} &rarr;
                             </Link>
                         </div>
                     </div>

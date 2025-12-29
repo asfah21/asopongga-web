@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CertificateController;
 
 use App\Http\Controllers\BlogController;
 
@@ -37,6 +38,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('posts', PostController::class);
     Route::resource('categories', CategoryController::class);
+    Route::resource('certificates', CertificateController::class);
 });
 
 require __DIR__.'/auth.php';

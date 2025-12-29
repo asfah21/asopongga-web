@@ -11,7 +11,7 @@ export default function MainLayout({ children, header }) {
         <div className="flex min-h-screen bg-gray-100 font-sans">
             {/* Sidebar */}
             <div className="hidden md:flex flex-col w-64 bg-gray-900 shadow-xl overflow-y-auto">
-                <div className="flex items-center justify-center h-20 bg-gray-900 shadow-sm z-10 shrink-0">
+                <div className="flex items-center justify-center h-16 bg-gray-950 shadow-sm z-10 shrink-0">
                     <Link href="/" className="flex items-center gap-2">
                         <div className="text-white font-bold text-2xl tracking-tight">ASOPONGGA<span className="text-red-600">WEB</span></div>
                     </Link>

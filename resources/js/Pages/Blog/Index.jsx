@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link, Head } from '@inertiajs/react';
 import FrontLayout from '@/Layouts/FrontLayout';
+import { useLanguage } from '@/Contexts/LanguageContext';
 
 export default function Index({ posts }) {
+    const { t } = useLanguage();
     const { data: blogPosts, links } = posts;
 
     return (
-        <FrontLayout title="Latest Insights & News">
-            <Head title="Blog" />
+        <FrontLayout title={t('blog_title')}>
+            <Head title={t('blog')} />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div className="grid gap-16 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12">
@@ -53,7 +55,7 @@ export default function Index({ posts }) {
                                                 {new Date(post.published_at).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
                                             </time>
                                             <span aria-hidden="true">&middot;</span>
-                                            <span>{Math.ceil(post.content.length / 500)} min read</span>
+                                            <span>{Math.ceil(post.content.length / 500)} {t('min_read')}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -63,8 +65,8 @@ export default function Index({ posts }) {
 
                     {blogPosts.length === 0 && (
                         <div className="col-span-3 text-center py-20">
-                            <h3 className="text-2xl font-bold text-gray-400">No posts published yet.</h3>
-                            <p className="text-gray-500 mt-2">Check back soon for new content!</p>
+                            <h3 className="text-2xl font-bold text-gray-400">{t('no_posts')}</h3>
+                            <p className="text-gray-500 mt-2">{t('check_back')}</p>
                         </div>
                     )}
                 </div>
