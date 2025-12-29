@@ -36,7 +36,7 @@ export default function Welcome({ recentPosts }) {
 
             <div className="overflow-hidden">
                 {/* Hero Section */}
-                <section className="relative min-h-[90vh] flex items-center bg-gray-900">
+                <section className="relative min-h-[90vh] flex flex-col bg-gray-900">
                     {/* Background Pattern */}
                     <div className="absolute inset-0 opacity-20 pointer-events-none">
                         <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -51,46 +51,48 @@ export default function Welcome({ recentPosts }) {
 
                     <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-red-600/20 to-transparent"></div>
 
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-12 md:py-20">
-                        <div className={`max-w-3xl transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-red-400 text-sm font-bold tracking-wider mb-8 backdrop-blur-sm">
-                                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-                                ASOPONGGA OFFICIAL
-                            </div>
+                    <div className="flex-1 flex items-center relative z-10 w-full">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 w-full">
+                            <div className={`max-w-3xl transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+                                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-red-400 text-sm font-bold tracking-wider mb-8 backdrop-blur-sm">
+                                    <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                                    ASOPONGGA OFFICIAL
+                                </div>
 
-                            <h1 className="text-4xl md:text-7xl font-extrabold text-white leading-[1.1] tracking-tight mb-8">
-                                {t('welcome_title')}
-                            </h1>
+                                <h1 className="text-4xl md:text-7xl font-extrabold text-white leading-[1.1] tracking-tight mb-8">
+                                    {t('welcome_title')}
+                                </h1>
 
-                            <p className="text-base md:text-xl text-gray-400 leading-relaxed mb-8 md:mb-12 max-w-2xl">
-                                {t('hero_subtitle')}
-                            </p>
+                                <p className="text-base md:text-xl text-gray-400 leading-relaxed mb-8 md:mb-12 max-w-2xl">
+                                    {t('hero_subtitle')}
+                                </p>
 
-                            <div className="flex flex-col sm:flex-row gap-5">
-                                <Link
-                                    href={route('certificate.verify')}
-                                    className="px-8 py-4 md:px-10 md:py-5 bg-red-600 hover:bg-red-500 text-white font-bold rounded-2xl shadow-xl shadow-red-600/20 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
-                                >
-                                    <span>{t('certificate')}</span>
-                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                                    </svg>
-                                </Link>
-                                <Link
-                                    href={route('blog.index')}
-                                    className="px-8 py-4 md:px-10 md:py-5 bg-white/5 hover:bg-white/10 text-white font-bold rounded-2xl border border-white/10 backdrop-blur-sm transition-all hover:scale-105 flex items-center justify-center gap-2"
-                                >
-                                    <span>{t('read_blog')}</span>
-                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                    </svg>
-                                </Link>
+                                <div className="flex flex-col sm:flex-row gap-5">
+                                    <Link
+                                        href={route('certificate.verify')}
+                                        className="px-8 py-4 md:px-10 md:py-5 bg-red-600 hover:bg-red-500 text-white font-bold rounded-2xl shadow-xl shadow-red-600/20 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
+                                    >
+                                        <span>{t('certificate')}</span>
+                                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                        </svg>
+                                    </Link>
+                                    <Link
+                                        href={route('blog.index')}
+                                        className="px-8 py-4 md:px-10 md:py-5 bg-white/5 hover:bg-white/10 text-white font-bold rounded-2xl border border-white/10 backdrop-blur-sm transition-all hover:scale-105 flex items-center justify-center gap-2"
+                                    >
+                                        <span>{t('read_blog')}</span>
+                                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                        </svg>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     {/* Stats Overlay Bottom */}
-                    <div className="absolute bottom-0 left-0 w-full bg-white/5 backdrop-blur-xl border-t border-white/5 py-6 md:py-10">
+                    <div className="relative z-10 w-full bg-white/5 backdrop-blur-xl border-t border-white/5 py-6 md:py-10">
                         <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
                             <StatCard val={t('stat_members')} label={t('stat_members_label')} delay={100} />
                             <StatCard val={t('stat_years')} label={t('stat_years_label')} delay={200} />
