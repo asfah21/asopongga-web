@@ -43,18 +43,18 @@ export default function Verify({ certificate, searched, filters }) {
         <FrontLayout title={t('certificate_verification_title') || 'Certificate'}>
             <Head title="Verify Certificate" />
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-10 md:space-y-16">
                 {/* Main Card Container */}
                 <div className="bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-gray-100">
                     {/* Search Header */}
-                    <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-red-900 px-8 py-16 text-center relative overflow-hidden">
+                    <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-red-900 px-6 md:px-8 py-10 md:py-16 text-center relative overflow-hidden">
                         <div className="relative z-10 space-y-6">
-                            <h2 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">{t('search_cert_title')}</h2>
-                            <p className="text-red-100/70 max-w-2xl mx-auto text-lg leading-relaxed">
+                            <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight">{t('search_cert_title')}</h2>
+                            <p className="text-red-100/70 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
                                 {t('search_cert_subtitle')}
                             </p>
 
-                            <form onSubmit={handleSearch} className="mt-12 max-w-xl mx-auto">
+                            <form onSubmit={handleSearch} className="mt-8 md:mt-12 max-w-xl mx-auto">
                                 <div className="flex flex-col sm:flex-row gap-4 p-2 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl">
                                     <div className="flex-1 relative">
                                         <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
@@ -64,7 +64,7 @@ export default function Verify({ certificate, searched, filters }) {
                                         </div>
                                         <input
                                             type="text"
-                                            className="w-full pl-14 pr-5 py-4 bg-transparent border-0 focus:ring-0 text-white placeholder-red-200/50 text-lg font-mono tracking-wider"
+                                            className="w-full pl-14 pr-5 py-4 bg-transparent border-0 focus:ring-0 text-white placeholder-red-200/50 text-base md:text-lg font-mono tracking-wider"
                                             placeholder="001/SFK/ASOPONGGA/...."
                                             value={data.no_cert}
                                             onChange={(e) => setData('no_cert', e.target.value.replace(/\s+/g, ''))}
@@ -96,7 +96,7 @@ export default function Verify({ certificate, searched, filters }) {
                     </div>
 
                     {/* Result Area */}
-                    <div className="p-8 md:p-16 min-h-[300px] flex items-center justify-center bg-gray-50/30">
+                    <div className="p-6 md:p-16 min-h-[250px] md:min-h-[300px] flex items-center justify-center bg-gray-50/30">
                         {!searched && (
                             <div className="text-center group">
                                 <div className="w-24 h-24 bg-white rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-sm">
@@ -104,15 +104,15 @@ export default function Verify({ certificate, searched, filters }) {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                     </svg>
                                 </div>
-                                <h3 className="text-2xl font-extrabold text-gray-900 mb-2 tracking-tight">{t('ready_to_verify')}</h3>
-                                <p className="text-gray-500 text-lg">{t('ready_to_verify_desc')}</p>
+                                <h3 className="text-xl md:text-2xl font-extrabold text-gray-900 mb-2 tracking-tight">{t('ready_to_verify')}</h3>
+                                <p className="text-gray-500 text-base md:text-lg">{t('ready_to_verify_desc')}</p>
                             </div>
                         )}
 
                         {searched && certificate && (
                             <div className="w-full max-w-4xl animate-in fade-in slide-in-from-bottom-5 duration-700">
                                 {/* Success Header */}
-                                <div className="bg-emerald-50 border border-emerald-100 rounded-2xl p-6 mb-8 flex items-center gap-4">
+                                <div className="bg-emerald-50 border border-emerald-100 rounded-2xl p-4 md:p-6 mb-8 flex items-center gap-4">
                                     <div className="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center shrink-0 shadow-lg shadow-emerald-200">
                                         <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
@@ -124,15 +124,15 @@ export default function Verify({ certificate, searched, filters }) {
                                     </div>
                                 </div>
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                                     <div className="space-y-8">
                                         <div>
                                             <label className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">{t('company_name')}</label>
-                                            <p className="text-2xl font-extrabold text-gray-900 leading-tight">{certificate.nama_perusahaan}</p>
+                                            <p className="text-xl md:text-2xl font-extrabold text-gray-900 leading-tight">{certificate.nama_perusahaan}</p>
                                         </div>
                                         <div>
                                             <label className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">{t('director')}</label>
-                                            <p className="text-xl text-gray-700 font-semibold">{certificate.nama_direktur}</p>
+                                            <p className="text-lg md:text-xl text-gray-700 font-semibold">{certificate.nama_direktur}</p>
                                         </div>
                                         <div>
                                             <label className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">{t('business_classification')}</label>
@@ -140,22 +140,22 @@ export default function Verify({ certificate, searched, filters }) {
                                         </div>
                                     </div>
 
-                                    <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm space-y-6">
-                                        <div className="flex justify-between items-center border-b border-gray-50 pb-4">
-                                            <span className="text-gray-500 text-sm font-medium">{t('cert_no')}</span>
-                                            <span className="font-mono font-bold text-gray-900">{certificate.no_cert}</span>
+                                    <div className="bg-white p-6 md:p-8 rounded-3xl border border-gray-100 shadow-sm space-y-4 md:space-y-6">
+                                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-gray-50 pb-4 gap-1 sm:gap-4">
+                                            <span className="text-gray-500 text-xs md:text-sm font-medium">{t('cert_no')}</span>
+                                            <span className="font-mono font-bold text-gray-900 break-all text-sm md:text-base">{certificate.no_cert}</span>
                                         </div>
-                                        <div className="flex justify-between items-center border-b border-gray-50 pb-4">
-                                            <span className="text-gray-500 text-sm font-medium">{t('valid_from')}</span>
-                                            <span className="text-gray-900 font-bold">{certificate.dari_tanggal ? new Date(certificate.dari_tanggal).toLocaleDateString() : '-'}</span>
+                                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-gray-50 pb-4 gap-1 sm:gap-4">
+                                            <span className="text-gray-500 text-xs md:text-sm font-medium">{t('valid_from')}</span>
+                                            <span className="text-gray-900 font-bold text-sm md:text-base">{certificate.dari_tanggal ? new Date(certificate.dari_tanggal).toLocaleDateString() : '-'}</span>
                                         </div>
-                                        <div className="flex justify-between items-center border-b border-gray-50 pb-4">
-                                            <span className="text-gray-500 text-sm font-medium">{t('expiry_date')}</span>
-                                            <span className="text-red-600 font-bold">{certificate.sampai_tanggal ? new Date(certificate.sampai_tanggal).toLocaleDateString() : '-'}</span>
+                                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-gray-50 pb-4 gap-1 sm:gap-4">
+                                            <span className="text-gray-500 text-xs md:text-sm font-medium">{t('expiry_date')}</span>
+                                            <span className="text-red-600 font-bold text-sm md:text-base">{certificate.sampai_tanggal ? new Date(certificate.sampai_tanggal).toLocaleDateString() : '-'}</span>
                                         </div>
-                                        <div className="flex justify-between items-center">
-                                            <span className="text-gray-500 text-sm font-medium">{t('status')}</span>
-                                            <span className="px-4 py-1.5 bg-emerald-100 text-emerald-700 rounded-xl text-xs font-extrabold tracking-widest uppercase">{t('active')}</span>
+                                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 sm:gap-4">
+                                            <span className="text-gray-500 text-xs md:text-sm font-medium">{t('status')}</span>
+                                            <span className="inline-flex w-fit px-4 py-1.5 bg-emerald-100 text-emerald-700 rounded-xl text-[10px] md:text-xs font-extrabold tracking-widest uppercase">{t('active')}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -169,8 +169,8 @@ export default function Verify({ certificate, searched, filters }) {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                                     </svg>
                                 </div>
-                                <h3 className="text-2xl font-extrabold text-gray-900 mb-2">{t('cert_not_found')}</h3>
-                                <p className="text-gray-500 text-lg mb-8">{t('cert_not_found_desc')} <span className="font-mono font-bold text-red-600">"{data.no_cert}"</span></p>
+                                <h3 className="text-xl md:text-2xl font-extrabold text-gray-900 mb-2">{t('cert_not_found')}</h3>
+                                <p className="text-gray-500 text-base md:text-lg mb-8">{t('cert_not_found_desc')} <span className="font-mono font-bold text-red-600">"{data.no_cert}"</span></p>
                                 <button
                                     onClick={() => setData('no_cert', '')}
                                     className="px-8 py-3 bg-gray-900 text-white rounded-xl font-bold hover:bg-gray-800 transition-all shadow-lg"
@@ -183,7 +183,7 @@ export default function Verify({ certificate, searched, filters }) {
                 </div>
 
                 {/* Features Section (3 Cards) */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12 pt-4 md:pt-8">
                     <div className="text-center space-y-4 p-8 rounded-3xl hover:bg-white hover:shadow-xl hover:shadow-gray-100 transition-all duration-500">
                         <div className="w-16 h-16 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center mx-auto shadow-sm">
                             <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -214,10 +214,10 @@ export default function Verify({ certificate, searched, filters }) {
                 </div>
 
                 {/* FAQ Section */}
-                <div className="bg-white rounded-[2rem] p-8 md:p-16 border border-gray-100 shadow-sm relative overflow-hidden">
+                <div className="bg-white rounded-[2rem] p-6 md:p-16 border border-gray-100 shadow-sm relative overflow-hidden">
                     <div className="max-w-3xl mx-auto">
                         <div className="text-center mb-12">
-                            <h3 className="text-3xl font-extrabold text-gray-900 mb-4">{t('faq_title')}</h3>
+                            <h3 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4">{t('faq_title')}</h3>
                             <div className="w-16 h-1 bg-red-600 mx-auto rounded-full"></div>
                         </div>
                         <div className="divide-y divide-gray-100">

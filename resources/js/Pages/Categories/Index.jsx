@@ -7,7 +7,7 @@ export default function Index({ categories }) {
         <MainLayout header="Categories">
             <Head title="Categories" />
 
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between mb-6 gap-4">
                 <div className="flex-1 max-w-md relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <svg className="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -17,12 +17,12 @@ export default function Index({ categories }) {
                     <input className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:border-red-500 focus:ring-1 focus:ring-red-500 sm:text-sm transition duration-150 ease-in-out" placeholder="Search categories..." type="text" />
                 </div>
 
-                <Link href={route('categories.create')} className="ml-4 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                <Link href={route('categories.create')} className="inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 whitespace-nowrap">
                     <span>Create Category</span>
                 </Link>
             </div>
 
-            <div className="bg-white rounded-lg shadow overflow-hidden border border-gray-200">
+            <div className="bg-white rounded-lg shadow overflow-x-auto border border-gray-200">
                 <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
                         <tr>

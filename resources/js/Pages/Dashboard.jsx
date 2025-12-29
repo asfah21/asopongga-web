@@ -7,17 +7,17 @@ export default function Dashboard() {
             <Head title="Dashboard" />
 
             <div className="bg-white overflow-hidden shadow-sm rounded-lg border border-gray-100">
-                <div className="p-10 text-center">
-                    <h1 className="text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">Welcome Back!</h1>
-                    <p className="max-w-2xl mx-auto text-lg text-gray-500 mb-8">
+                <div className="p-6 md:p-10 text-center">
+                    <h1 className="text-2xl md:text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">Welcome Back!</h1>
+                    <p className="max-w-2xl mx-auto text-sm md:text-lg text-gray-500 mb-8">
                         Manage your company profile website content from this dashboard. Create new blog posts, organize categories, and more.
                     </p>
-                    <div className="flex justify-center gap-4">
-                        <Link href={route('posts.create')} className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors">
+                    <div className="flex flex-col sm:flex-row justify-center gap-4">
+                        <Link href={route('posts.create')} className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors">
                             <svg className="w-5 h-5 mr-2 -ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4"></path></svg>
                             Write New Post
                         </Link>
-                        <Link href={route('posts.index')} className="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors">
+                        <Link href={route('posts.index')} className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors">
                             View All Posts
                         </Link>
                     </div>

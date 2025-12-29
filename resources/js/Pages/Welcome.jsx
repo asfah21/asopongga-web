@@ -5,13 +5,13 @@ import { useLanguage } from '@/Contexts/LanguageContext';
 
 const StatCard = ({ val, label, delay }) => (
     <div className={`text-center p-6 transition-all duration-700 delay-[${delay}ms] transform`}>
-        <div className="text-4xl md:text-5xl font-extrabold text-white mb-2">{val}</div>
+        <div className="text-3xl md:text-5xl font-extrabold text-white mb-2">{val}</div>
         <div className="text-red-200/60 uppercase tracking-widest text-xs font-bold">{label}</div>
     </div>
 );
 
 const ServiceCard = ({ icon, title, desc }) => (
-    <div className="group bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-red-500/10 transition-all duration-500 hover:-translate-y-2">
+    <div className="group bg-white p-8 md:p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-red-500/10 transition-all duration-500 hover:-translate-y-2">
         <div className="w-16 h-16 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-red-600 group-hover:text-white transition-colors duration-500 shadow-inner">
             {icon}
         </div>
@@ -31,7 +31,7 @@ export default function Welcome({ recentPosts }) {
     }, []);
 
     return (
-        <FrontLayout title={t('home')}>
+        <FrontLayout>
             <Head title="Official Website" />
 
             <div className="overflow-hidden">
@@ -51,25 +51,25 @@ export default function Welcome({ recentPosts }) {
 
                     <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-red-600/20 to-transparent"></div>
 
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-12 md:py-20">
                         <div className={`max-w-3xl transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-red-400 text-sm font-bold tracking-wider mb-8 backdrop-blur-sm">
                                 <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
                                 ASOPONGGA OFFICIAL
                             </div>
 
-                            <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-[1.1] tracking-tight mb-8">
+                            <h1 className="text-4xl md:text-7xl font-extrabold text-white leading-[1.1] tracking-tight mb-8">
                                 {t('welcome_title')}
                             </h1>
 
-                            <p className="text-lg md:text-xl text-gray-400 leading-relaxed mb-12 max-w-2xl">
+                            <p className="text-base md:text-xl text-gray-400 leading-relaxed mb-8 md:mb-12 max-w-2xl">
                                 {t('hero_subtitle')}
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-5">
                                 <Link
                                     href={route('certificate.verify')}
-                                    className="px-10 py-5 bg-red-600 hover:bg-red-500 text-white font-bold rounded-2xl shadow-xl shadow-red-600/20 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
+                                    className="px-8 py-4 md:px-10 md:py-5 bg-red-600 hover:bg-red-500 text-white font-bold rounded-2xl shadow-xl shadow-red-600/20 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
                                 >
                                     <span>{t('certificate')}</span>
                                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -78,7 +78,7 @@ export default function Welcome({ recentPosts }) {
                                 </Link>
                                 <Link
                                     href={route('blog.index')}
-                                    className="px-10 py-5 bg-white/5 hover:bg-white/10 text-white font-bold rounded-2xl border border-white/10 backdrop-blur-sm transition-all hover:scale-105 flex items-center justify-center gap-2"
+                                    className="px-8 py-4 md:px-10 md:py-5 bg-white/5 hover:bg-white/10 text-white font-bold rounded-2xl border border-white/10 backdrop-blur-sm transition-all hover:scale-105 flex items-center justify-center gap-2"
                                 >
                                     <span>{t('read_blog')}</span>
                                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -90,7 +90,7 @@ export default function Welcome({ recentPosts }) {
                     </div>
 
                     {/* Stats Overlay Bottom */}
-                    <div className="absolute bottom-0 left-0 w-full bg-white/5 backdrop-blur-xl border-t border-white/5 py-10">
+                    <div className="absolute bottom-0 left-0 w-full bg-white/5 backdrop-blur-xl border-t border-white/5 py-6 md:py-10">
                         <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
                             <StatCard val={t('stat_members')} label={t('stat_members_label')} delay={100} />
                             <StatCard val={t('stat_years')} label={t('stat_years_label')} delay={200} />
@@ -110,14 +110,14 @@ export default function Welcome({ recentPosts }) {
                 </div>
 
                 {/* Services Section */}
-                <section className="py-24 bg-gray-50/50">
+                <section className="py-16 md:py-24 bg-gray-50/50">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="text-center mb-20 space-y-4">
+                        <div className="text-center mb-12 md:mb-20 space-y-4">
                             <h2 className="text-sm font-bold text-red-600 uppercase tracking-[0.3em]">{t('services')}</h2>
-                            <p className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
+                            <p className="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
                                 {t('better_way')}
                             </p>
-                            <p className="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
+                            <p className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
                                 {t('service_desc')}
                             </p>
                         </div>
@@ -143,14 +143,14 @@ export default function Welcome({ recentPosts }) {
                 </section>
 
                 {/* Why Us Section */}
-                <section className="py-24 bg-white relative overflow-hidden">
+                <section className="py-16 md:py-24 bg-white relative overflow-hidden">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex flex-col lg:flex-row items-center gap-20">
                             <div className="flex-1 space-y-8">
-                                <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
+                                <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
                                     {t('why_choose_us')}
                                 </h2>
-                                <p className="text-xl text-gray-500 leading-relaxed">
+                                <p className="text-lg md:text-xl text-gray-500 leading-relaxed">
                                     {t('why_choose_us_subtitle')}
                                 </p>
 
@@ -193,18 +193,18 @@ export default function Welcome({ recentPosts }) {
 
                 {/* Recent News Section */}
                 {recentPosts && recentPosts.length > 0 && (
-                    <section className="bg-gray-50 py-24">
+                    <section className="bg-gray-50 py-16 md:py-24">
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                             <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                                 <div className="space-y-4">
                                     <h2 className="text-sm font-bold text-red-600 uppercase tracking-[0.3em]">{t('blog')}</h2>
-                                    <p className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
+                                    <p className="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
                                         {t('latest_news')}
                                     </p>
                                 </div>
                                 <Link
                                     href={route('blog.index')}
-                                    className="px-8 py-3 bg-white text-gray-900 font-bold rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all flex items-center gap-2"
+                                    className="px-6 py-2.5 md:px-8 md:py-3 bg-white text-gray-900 font-bold rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all flex items-center gap-2"
                                 >
                                     {t('view_all')}
                                 </Link>
@@ -269,16 +269,16 @@ export default function Welcome({ recentPosts }) {
                 )}
 
                 {/* Footer Join CTA */}
-                <section className="py-24 bg-red-600">
+                <section className="py-16 md:py-24 bg-red-600">
                     <div className="max-w-4xl mx-auto px-4 text-center space-y-10">
-                        <h2 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight">
+                        <h2 className="text-3xl md:text-6xl font-extrabold text-white tracking-tight">
                             {t('cta_title')}
                         </h2>
-                        <p className="text-xl text-red-100 max-w-2xl mx-auto opacity-80 leading-relaxed">
+                        <p className="text-lg md:text-xl text-red-100 max-w-2xl mx-auto opacity-80 leading-relaxed">
                             {t('cta_subtitle')}
                         </p>
                         <div className="pt-4">
-                            <button className="px-12 py-5 bg-white text-red-600 font-extrabold rounded-2xl shadow-2xl transition-all hover:scale-105 active:scale-95 text-lg">
+                            <button className="px-10 py-4 md:px-12 md:py-5 bg-white text-red-600 font-extrabold rounded-2xl shadow-2xl transition-all hover:scale-105 active:scale-95 text-base md:text-lg">
                                 {t('contact_us')}
                             </button>
                         </div>
