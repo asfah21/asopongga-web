@@ -135,8 +135,26 @@ export default function Verify({ certificate, searched, filters }) {
                                             <p className="text-lg md:text-xl text-gray-700 font-semibold">{certificate.nama_direktur}</p>
                                         </div>
                                         <div>
-                                            <label className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">{t('business_classification')}</label>
+                                            <label className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">{t('business_classification')}</label>
                                             <p className="text-gray-700 font-medium">{certificate.jasa || '-'} {certificate.perdagangan ? `/ ${certificate.perdagangan}` : ''}</p>
+                                        </div>
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 border-t border-gray-100">
+                                            <div className="sm:col-span-2">
+                                                <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-1">{t('address')}</label>
+                                                <p className="text-gray-600 text-sm">{certificate.alamat}</p>
+                                            </div>
+                                            {certificate.kabupaten && (
+                                                <div>
+                                                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-1">{t('regency')}</label>
+                                                    <p className="text-gray-600 text-sm">{certificate.kabupaten}</p>
+                                                </div>
+                                            )}
+                                            {certificate.provinsi && (
+                                                <div>
+                                                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-1">{t('province')}</label>
+                                                    <p className="text-gray-600 text-sm">{certificate.provinsi}</p>
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
 

@@ -11,6 +11,8 @@ class Certificate extends Model
         'nama_perusahaan',
         'nama_direktur',
         'alamat',
+        'kabupaten',
+        'provinsi',
         'telp',
         'fax',
         'email',

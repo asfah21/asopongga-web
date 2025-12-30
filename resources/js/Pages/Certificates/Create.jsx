@@ -12,6 +12,8 @@ export default function Create() {
         nama_perusahaan: '',
         nama_direktur: '',
         alamat: '',
+        kabupaten: '',
+        provinsi: '',
         telp: '',
         fax: '',
         email: '',
@@ -98,6 +100,30 @@ export default function Create() {
                                 required
                             />
                             <InputError message={errors.alamat} className="mt-2" />
+                        </div>
+
+                        <div>
+                            <InputLabel htmlFor="kabupaten" value="Kabupaten/Kota" />
+                            <TextInput
+                                id="kabupaten"
+                                type="text"
+                                className="mt-1 block w-full"
+                                value={data.kabupaten}
+                                onChange={(e) => setData('kabupaten', e.target.value)}
+                            />
+                            <InputError message={errors.kabupaten} className="mt-2" />
+                        </div>
+
+                        <div>
+                            <InputLabel htmlFor="provinsi" value="Provinsi" />
+                            <TextInput
+                                id="provinsi"
+                                type="text"
+                                className="mt-1 block w-full"
+                                value={data.provinsi}
+                                onChange={(e) => setData('provinsi', e.target.value)}
+                            />
+                            <InputError message={errors.provinsi} className="mt-2" />
                         </div>
 
                         <div>
