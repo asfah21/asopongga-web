@@ -128,17 +128,17 @@ export default function Welcome({ recentPosts }) {
                             <ServiceCard
                                 title={t('web_dev')}
                                 desc={t('web_dev_desc')}
-                                icon={<svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>}
+                                icon={<svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>}
                             />
                             <ServiceCard
                                 title={t('mobile_sol')}
                                 desc={t('mobile_sol_desc')}
-                                icon={<svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>}
+                                icon={<svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>}
                             />
                             <ServiceCard
                                 title={t('consultancy')}
                                 desc={t('consultancy_desc')}
-                                icon={<svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" /></svg>}
+                                icon={<svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 005.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>}
                             />
                         </div>
                     </div>
@@ -269,6 +269,57 @@ export default function Welcome({ recentPosts }) {
                         </div>
                     </section>
                 )}
+
+                {/* FAQ Section */}
+                <section className="py-16 md:py-24 bg-white">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="text-center mb-16 space-y-4">
+                            <h2 className="text-sm font-bold text-red-600 uppercase tracking-[0.3em]">{t('faq_title')}</h2>
+                            <p className="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
+                                {t('faq_section_title')}
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                            <div className="space-y-4">
+                                <h3 className="text-xl font-bold text-gray-900 flex gap-3">
+                                    <span className="text-red-600 text-2xl">Q.</span>
+                                    {t('faq_asopongga_q')}
+                                </h3>
+                                <p className="text-gray-500 leading-relaxed pl-10 border-l-2 border-red-50">
+                                    {t('faq_asopongga_a')}
+                                </p>
+                            </div>
+                            <div className="space-y-4">
+                                <h3 className="text-xl font-bold text-gray-900 flex gap-3">
+                                    <span className="text-red-600 text-2xl">Q.</span>
+                                    {t('faq_philosophy_q')}
+                                </h3>
+                                <p className="text-gray-500 leading-relaxed pl-10 border-l-2 border-red-50">
+                                    {t('faq_philosophy_a')}
+                                </p>
+                            </div>
+                            <div className="space-y-4">
+                                <h3 className="text-xl font-bold text-gray-900 flex gap-3">
+                                    <span className="text-red-600 text-2xl">Q.</span>
+                                    {t('faq_membership_q')}
+                                </h3>
+                                <p className="text-gray-500 leading-relaxed pl-10 border-l-2 border-red-50">
+                                    {t('faq_membership_a')}
+                                </p>
+                            </div>
+                            <div className="space-y-4">
+                                <h3 className="text-xl font-bold text-gray-900 flex gap-3">
+                                    <span className="text-red-600 text-2xl">Q.</span>
+                                    {t('faq_leader_q')}
+                                </h3>
+                                <p className="text-gray-500 leading-relaxed pl-10 border-l-2 border-red-50">
+                                    {t('faq_leader_a')}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 {/* Footer Join CTA */}
                 <section className="py-16 md:py-24 bg-red-600">
