@@ -13,6 +13,13 @@ class Post extends Model
         'title', 'slug', 'excerpt', 'content', 'status', 'published_at', 'author_id', 'featured_image'
     ];
 
+    protected $casts = [
+        'title' => 'array',
+        'content' => 'array',
+        'excerpt' => 'array',
+        'published_at' => 'datetime',
+    ];
+
     protected $dates = ['published_at'];
 
     public function author()

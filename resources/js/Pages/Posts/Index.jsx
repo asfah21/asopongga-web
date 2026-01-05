@@ -53,7 +53,7 @@ export default function Index({ posts }) {
                                     <div className="flex items-center">
                                         <div className="text-sm font-medium text-red-600 truncate max-w-sm">
                                             <Link href={route('posts.edit', post.id)} className="hover:underline">
-                                                {post.title}
+                                                {typeof post.title === 'string' ? post.title : (post.title.en || post.title.id || Object.values(post.title)[0] || 'Untitled')}
                                             </Link>
                                         </div>
                                     </div>

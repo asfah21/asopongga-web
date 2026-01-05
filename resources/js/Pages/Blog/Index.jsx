@@ -4,8 +4,15 @@ import FrontLayout from '@/Layouts/FrontLayout';
 import { useLanguage } from '@/Contexts/LanguageContext';
 
 export default function Index({ posts }) {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     const { data: blogPosts, links } = posts;
+
+    const getLocalized = (data) => {
+        if (typeof data === 'object' && data !== null) {
+            return data[language] || data['en'] || Object.values(data)[0] || '';
+        }
+        return data;
+    };
 
     return (
         <FrontLayout title={t('blog_title')}>
@@ -35,7 +42,7 @@ export default function Index({ posts }) {
                                         <img
                                             className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-700"
                                             src={`/storage/${post.featured_image}`}
-                                            alt={post.title}
+                                            alt={getLocalized(post.title)}
                                         />
                                     ) : (
                                         <div className="h-full w-full bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center relative overflow-hidden">
@@ -47,7 +54,7 @@ export default function Index({ posts }) {
                                                     <rect width="100" height="100" fill="url(#grid)" />
                                                 </svg>
                                             </div>
-                                            <span className="text-white font-bold text-4xl opacity-20">{post.title.charAt(0)}</span>
+                                            <span className="text-white font-bold text-4xl opacity-20">{getLocalized(post.title).charAt(0)}</span>
                                         </div>
                                     )}
                                     {/* Category Floating Badge */}
@@ -70,10 +77,10 @@ export default function Index({ posts }) {
 
                                         <Link href={route('blog.show', post.slug)} className="block group/title">
                                             <h3 className="text-2xl font-bold text-gray-900 group-hover:text-red-600 transition-colors leading-tight mb-4 line-clamp-2">
-                                                {post.title}
+                                                {getLocalized(post.title)}
                                             </h3>
                                             <p className="text-gray-500 text-sm leading-relaxed mb-6 line-clamp-3">
-                                                {post.excerpt}
+                                                {getLocalized(post.excerpt)}
                                             </p>
                                         </Link>
                                     </div>

@@ -23,12 +23,19 @@ const ServiceCard = ({ icon, title, desc }) => (
 );
 
 export default function Welcome({ recentPosts }) {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
         setIsVisible(true);
     }, []);
+
+    const getLocalized = (data) => {
+        if (typeof data === 'object' && data !== null) {
+            return data[language] || data['en'] || Object.values(data)[0] || '';
+        }
+        return data;
+    };
 
     return (
         <FrontLayout>
@@ -220,7 +227,7 @@ export default function Welcome({ recentPosts }) {
                                                 <img
                                                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                                     src={`/storage/${post.featured_image}`}
-                                                    alt={post.title}
+                                                    alt={getLocalized(post.title)}
                                                 />
                                             ) : (
                                                 <div className="w-full h-full bg-gray-900 flex items-center justify-center">
@@ -242,10 +249,10 @@ export default function Welcome({ recentPosts }) {
                                             </div>
                                             <Link href={route('blog.show', post.slug)} className="block group/title">
                                                 <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover/title:text-red-600 transition-colors line-clamp-2 leading-tight">
-                                                    {post.title}
+                                                    {getLocalized(post.title)}
                                                 </h3>
                                                 <p className="text-gray-500 text-sm line-clamp-3 mb-8 leading-relaxed">
-                                                    {post.excerpt}
+                                                    {getLocalized(post.excerpt)}
                                                 </p>
                                             </Link>
                                             <div className="flex items-center justify-between pt-6 border-t border-gray-50">

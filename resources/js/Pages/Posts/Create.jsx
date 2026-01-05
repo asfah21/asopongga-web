@@ -5,11 +5,14 @@ import TextInput from '@/Components/TextInput';
 import InputLabel from '@/Components/InputLabel';
 import InputError from '@/Components/InputError';
 import PrimaryButton from '@/Components/PrimaryButton';
+import RichTextEditor from '@/Components/RichTextEditor';
 
 export default function Create({ categories }) {
+    const [currentLang, setCurrentLang] = React.useState('en');
+
     const { data, setData, post, processing, errors } = useForm({
-        title: '',
-        content: '',
+        title: { en: '', id: '', zh: '' },
+        content: { en: '', id: '', zh: '' },
         status: 'draft',
         categories: [],
         featured_image: null,
@@ -29,37 +32,58 @@ export default function Create({ categories }) {
         }
     };
 
+    const languages = [
+        { code: 'en', label: 'English (EN)' },
+        { code: 'id', label: 'Indonesian (ID)' },
+        { code: 'zh', label: 'Chinese (ZH)' },
+    ];
+
     return (
         <MainLayout header="Create Post">
             <Head title="Create New Post" />
             <div className="max-w-5xl mx-auto bg-white shadow-md rounded-xl p-8 border border-gray-100">
                 <form onSubmit={submit} className="space-y-6">
+
+                    {/* Language Tabs */}
+                    <div className="flex space-x-2 border-b border-gray-200 mb-4">
+                        {languages.map((lang) => (
+                            <button
+                                key={lang.code}
+                                type="button"
+                                onClick={() => setCurrentLang(lang.code)}
+                                className={`px-4 py-2 text-sm font-medium rounded-t-lg transition-colors ${currentLang === lang.code
+                                    ? 'bg-red-50 text-red-700 border-b-2 border-red-500'
+                                    : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
+                                    }`}
+                            >
+                                {lang.label}
+                            </button>
+                        ))}
+                    </div>
+
                     <div>
-                        <InputLabel htmlFor="title" value="Post Title" />
+                        <InputLabel htmlFor="title" value={`Post Title (${languages.find(l => l.code === currentLang).label})`} />
                         <TextInput
                             id="title"
                             type="text"
                             className="mt-1 block w-full text-lg"
-                            value={data.title}
-                            onChange={(e) => setData('title', e.target.value)}
-                            required
-                            isFocused
+                            value={data.title[currentLang]}
+                            onChange={(e) => setData('title', { ...data.title, [currentLang]: e.target.value })}
+                            required={currentLang === 'en'}
                             placeholder="Enter a catchy title..."
                         />
-                        <InputError message={errors.title} className="mt-2" />
+                        <InputError message={errors[`title.${currentLang}`] || errors.title} className="mt-2" />
                     </div>
 
                     <div>
-                        <InputLabel htmlFor="content" value="Content" />
-                        <textarea
-                            id="content"
-                            className="mt-1 block w-full border-gray-300 focus:border-red-500 focus:ring-red-500 rounded-md shadow-sm h-80 text-base"
-                            value={data.content}
-                            onChange={(e) => setData('content', e.target.value)}
+                        <InputLabel htmlFor="content" value={`Content (${languages.find(l => l.code === currentLang).label})`} />
+                        <RichTextEditor
+                            key={currentLang}
+                            value={data.content[currentLang]}
+                            onChange={(content) => setData('content', { ...data.content, [currentLang]: content })}
                             placeholder="Write your story here..."
-                            required
                         />
-                        <InputError message={errors.content} className="mt-2" />
+                        <InputError message={errors[`content.${currentLang}`] || errors.content} className="mt-2" />
                     </div>
 
                     <div>

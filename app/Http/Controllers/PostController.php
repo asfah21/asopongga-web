@@ -32,8 +32,11 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required',
+            'title' => 'required|array',
+            'title.en' => 'required|string|max:255',
+            'title.id' => 'nullable|string|max:255',
+            'title.zh' => 'nullable|string|max:255',
+            'content' => 'required|array',
             'status' => 'required|in:draft,published',
             'categories' => 'array',
             'categories.*' => 'exists:categories,id',
@@ -45,11 +48,19 @@ class PostController extends Controller
             $imagePath = $request->file('featured_image')->store('posts', 'public');
         }
 
+        // Generate slug from English title or Indonesian title
+        $slugSource = $validated['title']['en'] ?? $validated['title']['id'] ?? reset($validated['title']);
+        
+        $excerpts = [];
+        foreach($validated['content'] as $lang => $text) {
+             if($text) $excerpts[$lang] = Str::limit(strip_tags($text), 150);
+        }
+
         $post = Post::create([
             'title' => $validated['title'],
-            'slug' => Str::slug($validated['title']),
+            'slug' => Str::slug($slugSource),
             'content' => $validated['content'],
-            'excerpt' => Str::limit(strip_tags($validated['content']), 150),
+            'excerpt' => $excerpts,
             'status' => $validated['status'],
             'published_at' => $validated['status'] === 'published' ? now() : null,
             'author_id' => auth()->id(),
@@ -75,19 +86,30 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required',
+            'title' => 'required|array',
+            'title.en' => 'required|string|max:255',
+            'title.id' => 'nullable|string|max:255',
+            'title.zh' => 'nullable|string|max:255',
+            'content' => 'required|array',
             'status' => 'required|in:draft,published',
             'categories' => 'array',
             'categories.*' => 'exists:categories,id',
             'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
+        // Generate slug from English title or Indonesian title
+        $slugSource = $validated['title']['en'] ?? $validated['title']['id'] ?? reset($validated['title']);
+
+        $excerpts = [];
+        foreach($validated['content'] as $lang => $text) {
+             if($text) $excerpts[$lang] = Str::limit(strip_tags($text), 150);
+        }
+
         $data = [
             'title' => $validated['title'],
-            'slug' => Str::slug($validated['title']),
+            'slug' => Str::slug($slugSource),
             'content' => $validated['content'],
-            'excerpt' => Str::limit(strip_tags($validated['content']), 150),
+            'excerpt' => $excerpts,
             'status' => $validated['status'],
             'published_at' => $validated['status'] === 'published' ? now() : null,
         ];
@@ -114,5 +136,26 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->route('posts.index')->with('success', 'Post deleted successfully.');
+    }
+
+    public function uploadImage(Request $request)
+    {
+        \Log::info('Upload attempt', ['hasFile' => $request->hasFile('upload')]);
+        if ($request->hasFile('upload')) {
+            $file = $request->file('upload');
+            \Log::info('File info', [
+                'name' => $file->getClientOriginalName(),
+                'size' => $file->getSize(),
+                'mime' => $file->getMimeType()
+            ]);
+            $path = $file->store('editor', 'public');
+            $url = asset(Storage::url($path));
+            \Log::info('Upload success', ['path' => $path, 'url' => $url]);
+            return response()->json([
+                'url' => $url
+            ]);
+        }
+        \Log::error('Upload failed - No file');
+        return response()->json(['error' => 'No image uploaded'], 400);
     }
 }
